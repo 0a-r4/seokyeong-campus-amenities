@@ -9,4 +9,5 @@ export default defineConfig({
     tailwindcss(),
   ],
   assetsInclude: ['**/*.md'],
+  base: '/seokyeong-campus-amenities',
 })
