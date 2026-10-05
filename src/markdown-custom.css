@@ -1,0 +1,63 @@
+.markdown-body {
+  word-break: keep-all;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+/* 표 전체 */
+.markdown-body table {
+  width: 100%;
+  table-layout: auto;
+}
+
+/* 모든 셀 */
+.markdown-body th,
+.markdown-body td {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* 첫 번째 열 */
+.markdown-body th:first-child,
+.markdown-body td:first-child {
+  width: 22%;
+}
+
+.markdown-body details {
+  margin: 16px 0;
+  padding: 0 16px;
+  border: 1px solid rgb(209, 217, 224);
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.markdown-body details summary {
+  margin: 0 -18px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0);
+}
+
+.markdown-body details[open] {
+  padding-bottom: 12px;
+}
+
+.markdown-body details[open] summary {
+  border-bottom: 1px solid rgb(209, 217, 224);
+}
+
+.markdown-body details > p {
+  margin-top: 12px;
+}
+
+.markdown-body details img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
