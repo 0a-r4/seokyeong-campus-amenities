@@ -5,24 +5,38 @@ import remarkGfm from 'remark-gfm';
 import 'github-markdown-css/github-markdown-light.css';
 import './markdown-custom.css';
 
+import Header from './components/Header.tsx';
+import Footer from './components/Footer.tsx';
+
 import markdownDocument from './data/bodys/seokyeong-sporex.md?raw';
 
 export default function App() {
   return (
     <div
-      className="markdown-body"
       style={{
-        padding: '12px',
-        maxWidth: '800px',
+        maxWidth: '500px',
         margin: '0 auto'
       }}
     >
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+      <Header />
+
+      <div
+        className="markdown-body"
+        style={{
+          padding: '12px',
+          margin: '0 auto',
+          marginBottom: '1rem',
+        }}
       >
-        {markdownDocument}
-      </ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
+        >
+          {markdownDocument}
+        </ReactMarkdown>
+      </div>
+
+      <Footer />
     </div>
   );
 }
