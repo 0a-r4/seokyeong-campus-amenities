@@ -8,7 +8,7 @@ import './markdown-custom.css';
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 
-import markdownDocument from './data/bodys/seokyeong-sporex.md?raw';
+import amenities from './data/amenities.json';
 
 export default function App() {
   return (
