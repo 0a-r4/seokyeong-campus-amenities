@@ -1,42 +1,22 @@
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import remarkGfm from 'remark-gfm';
-
-import 'github-markdown-css/github-markdown-light.css';
-import './markdown-custom.css';
-
-import Header from './components/Header.tsx';
-import Footer from './components/Footer.tsx';
-
-import amenities from './data/amenities.json';
+import Header from './components/layout/Header.tsx';
+import SearchBar from './components/layout/SearchBar.tsx';
+import CategoryFilter from './components/layout/CategoryFilter.tsx';
+import Footer from './components/layout/Footer.tsx';
 
 export default function App() {
   return (
     <div
       style={{
         maxWidth: '500px',
-        margin: '0 auto'
+        margin: '0 auto',
       }}
     >
       <Header />
-
-      <div
-        className="markdown-body"
-        style={{
-          padding: '12px',
-          margin: '0 auto',
-          marginBottom: '1rem',
-        }}
-      >
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw]}
-        >
-          {markdownDocument}
-        </ReactMarkdown>
-      </div>
-
+      <SearchBar />
+      <CategoryFilter />
       <Footer />
     </div>
   );
 }
+
+
