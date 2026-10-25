@@ -17,7 +17,7 @@ export default function Header() {
           lineHeight: 'normal',
         }}
       >
-        서경대학교 편의 시설 가이드
+        서경대학교 편의시설 가이드
       </p>
     </header>
   );
