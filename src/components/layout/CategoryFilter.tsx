@@ -44,7 +44,7 @@ export default function CategoryFilter({
                 flexShrink: 0,
                 padding: '0.4rem 0.8rem',
                 fontSize: '13px',
-                borderRadius: '16px',
+                borderRadius: '4px',
                 border: isSelected ? '1px solid #333' : '1px solid #ccc',
                 backgroundColor: isSelected ? '#333' : '#f5f5f5',
                 color: isSelected ? '#fff' : '#333',
