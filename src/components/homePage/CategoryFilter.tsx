@@ -22,14 +22,22 @@ export default function CategoryFilter({
 
   return (
     <nav aria-label="카테고리 필터">
+      <style>{`
+        .category-filter-scroll::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
       <div
+        className="category-filter-scroll"
         style={{
           display: 'flex',
           overflowX: 'auto',
           whiteSpace: 'nowrap',
           gap: '0.5rem',
-          padding: '0rem 1rem 1rem 1rem',
+          padding: '0rem 1rem 0.9rem 1rem',
           WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
         }}
       >
         {categories.map((cat) => {

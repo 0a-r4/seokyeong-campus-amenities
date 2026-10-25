@@ -2,16 +2,28 @@ import { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 
 interface SearchBarProps {
+  searchQuery?: string;
   onSearch?: (query: string) => void;
 }
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
-  const [query, setQuery] = useState<string>('');
+export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
+  const [internalQuery, setInternalQuery] = useState<string>('');
+  const query = searchQuery !== undefined ? searchQuery : internalQuery;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextQuery = e.target.value;
+    if (searchQuery === undefined) {
+      setInternalQuery(nextQuery);
+    }
+    if (onSearch) {
+      onSearch(nextQuery);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (onSearch) {
-      onSearch(query.trim());
+      onSearch(query);
     }
   };
 
@@ -32,7 +44,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
       <input
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleChange}
         placeholder="편의시설 검색..."
         aria-label="편의시설 검색"
         style={{
@@ -63,5 +75,3 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
     </form>
   );
 }
-
-
