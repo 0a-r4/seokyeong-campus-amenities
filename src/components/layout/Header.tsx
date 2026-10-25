@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import homeIcon from '../assets/homeIcon.svg';
+import { MdHome } from 'react-icons/md';
 
 export default function Header() {
   return (
@@ -34,12 +34,12 @@ export default function Header() {
           }}
         >
           <li style={{ display: 'flex', alignItems: 'center' }}>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-              <img
-                src={homeIcon}
-                alt="홈"
-                style={{ width: '2rem', height: '2rem', display: 'block' }}
-              />
+            <Link
+              to="/"
+              style={{ display: 'flex', alignItems: 'center' }}
+              aria-label="홈으로 이동"
+            >
+              <MdHome size="2rem" />
             </Link>
           </li>
         </ul>

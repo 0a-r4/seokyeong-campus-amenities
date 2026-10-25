@@ -1,0 +1,50 @@
+[
+  {
+    "id": "daeil",
+    "name": "대일관"
+  },
+  {
+    "id": "munye",
+    "name": "문예관"
+  },
+  {
+    "id": "main",
+    "name": "본관"
+  },
+  {
+    "id": "bugak",
+    "name": "북악관"
+  },
+  {
+    "id": "sangseung",
+    "name": "상승관"
+  },
+  {
+    "id": "yudam",
+    "name": "유담관"
+  },
+  {
+    "id": "eunju-1",
+    "name": "은주1관"
+  },
+  {
+    "id": "eunju-2",
+    "name": "은주2관"
+  },
+  {
+    "id": "cheongun",
+    "name": "청운관"
+  },
+  {
+    "id": "hanlim",
+    "name": "한림관"
+  },
+  {
+    "id": "hyein",
+    "name": "혜인관"
+  },
+  {
+    "id": "suin",
+    "name": "수인관"
+  }
+]

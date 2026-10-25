@@ -1,0 +1,42 @@
+[
+    {
+        "id": "all",
+        "name": "전체"
+    },
+    {
+        "id": "print",
+        "name": "인쇄/복사"
+    },
+    {
+        "id": "food",
+        "name": "식당/음식점"
+    },
+    {
+        "id": "cafe",
+        "name": "카페"
+    },
+    {
+        "id": "mart",
+        "name": "편의점/매점"
+    },
+    {
+        "id": "lounge",
+        "name": "자유공간/휴게"
+    },
+    {
+        "id": "sports",
+        "name": "체육/운동"
+    },
+    {
+        "id": "service",
+        "name": "생활/미용/서점"
+    },
+    {
+        "id": "finance",
+        "name": "금융/행정"
+    },
+    {
+        "id": "safety",
+        "name": "안전/의무"
+    }
+]

@@ -1,7 +1,27 @@
-{
-    "id": "seokyeong-sporex",
-    "name": "서경스포렉스",
-    "building": "유담관",
-    "floor": "3",
-    "contentPath": "./content/seokyeong-sporex.md"
-}
+[
+    {
+        "id": "seokyeong-sporex",
+        "name": "서경스포렉스",
+        "categoryId": "sports",
+        "buildingId": "yudam",
+        "floor": "3층",
+        "operatingHours": {
+            "default": {
+                "open": "06:00",
+                "close": "23:00"
+            },
+            "saturday": {
+                "open": "09:00",
+                "close": "21:00"
+            },
+            "holiday": {
+                "open": "09:00",
+                "close": "21:00"
+            },
+            "sunday": {
+                "open": false,
+                "close": false
+            }
+        }
+    }
+]
