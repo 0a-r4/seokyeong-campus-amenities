@@ -8,9 +8,10 @@ export default function Footer() {
     <footer
       style={{
         padding: '1.2rem',
-        backgroundColor: '#e4e4e4',
+        backgroundColor: '#eeeeee',
         fontSize: '14px',
         marginTop: 'auto',
+        borderTop: '1px solid #949494',
       }}
     >
       <div
@@ -32,7 +33,7 @@ export default function Footer() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '0.3rem',
+            gap: '0.5rem',
           }}
         >
           <a
@@ -44,7 +45,7 @@ export default function Footer() {
             피드백 및 설문조사
           </a>
           <a href="mailto:psw120407@skuniv.ac.kr" style={linkStyle}>
-            문의하기
+            정보 수정 제안 / 문의하기
           </a>
           <a
             href="https://github.com/0a-r4/seokyeong-campus-amenities"
