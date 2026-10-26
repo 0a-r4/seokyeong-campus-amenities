@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import amenitiesData from '../data/amenities.json';
+import CookieOptOut from '../components/homePage/CookieOptOut.tsx';
 import 'github-markdown-css/github-markdown-light.css';
 import '../markdown-custom.css';
 
@@ -30,6 +31,7 @@ export default function AmenityDetailPage() {
   }
 
   const markdownContent = targetEntry ? targetEntry[1] : null;
+  const isPrivacyPage = amenitiesId?.toLowerCase() === 'privacy';
 
   return (
     <div>
@@ -65,7 +67,11 @@ export default function AmenityDetailPage() {
             fontSize: '14px',
           }}
         >
-          <p>편의시설 정보를 찾을 수 없습니다.</p>
+          <p>
+            {isPrivacyPage
+              ? '개인정보 처리방침을 찾을 수 없습니다.'
+              : '편의시설 정보를 찾을 수 없습니다.'}
+          </p>
         </div>
       ) : (
         <div
@@ -81,9 +87,12 @@ export default function AmenityDetailPage() {
           >
             {markdownContent}
           </ReactMarkdown>
+
+          {isPrivacyPage && <CookieOptOut />}
         </div>
       )}
     </div>
   );
 }
+
 
