@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import categories from '../../data/categories.json';
 
 interface CategoryFilterProps {
@@ -12,11 +12,30 @@ export default function CategoryFilter({
 }: CategoryFilterProps) {
   const [internalCategory, setInternalCategory] = useState<string>('all');
   const activeCategory = selectedCategory ?? internalCategory;
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
 
   const handleSelect = (id: string) => {
-    setInternalCategory(id);
+    const nextCategory = activeCategory === id ? 'all' : id;
+    setInternalCategory(nextCategory);
     if (onSelectCategory) {
-      onSelectCategory(id);
+      onSelectCategory(nextCategory);
     }
   };
 
@@ -28,6 +47,7 @@ export default function CategoryFilter({
         }
       `}</style>
       <div
+        ref={scrollRef}
         className="category-filter-scroll"
         style={{
           display: 'flex',
