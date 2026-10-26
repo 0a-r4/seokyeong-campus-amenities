@@ -1,8 +1,9 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/md';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import amenitiesData from '../data/amenities.json';
 import 'github-markdown-css/github-markdown-light.css';
 import '../markdown-custom.css';
 
@@ -15,10 +16,18 @@ const markdownModules = import.meta.glob<string>('../data/content/*.md', {
 export default function AmenityDetailPage() {
   const { amenitiesId } = useParams<{ amenitiesId: string }>();
 
+  const isAmenityExist = amenitiesData.some(
+    (item) => item.id.toLowerCase() === amenitiesId?.toLowerCase()
+  );
+
   const targetEntry = Object.entries(markdownModules).find(([path]) => {
     const filename = path.split('/').pop()?.replace(/\.md$/, '');
     return filename?.toLowerCase() === amenitiesId?.toLowerCase();
   });
+
+  if (!isAmenityExist && !targetEntry) {
+    return <Navigate to="/" replace />;
+  }
 
   const markdownContent = targetEntry ? targetEntry[1] : null;
 

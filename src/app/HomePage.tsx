@@ -8,6 +8,7 @@ import AmenityList from '../components/homePage/AmenityList.tsx';
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isOpenOnly, setIsOpenOnly] = useState<boolean>(false);
 
   return (
     <>
@@ -20,10 +21,14 @@ export default function HomePage() {
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
       />
-      <OpenOnlyFilter />
+      <OpenOnlyFilter
+        isOpenOnly={isOpenOnly}
+        onToggle={setIsOpenOnly}
+      />
       <AmenityList
         selectedCategory={selectedCategory}
         searchQuery={searchQuery}
+        isOpenOnly={isOpenOnly}
       />
     </>
   );
