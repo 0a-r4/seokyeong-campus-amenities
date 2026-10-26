@@ -180,17 +180,17 @@ export default function AmenityList({
                         padding: 0,
                       }}
                     >
-                      {buildingAmenities.map((amenity) => {
+                      {buildingAmenities.map((amenity, index) => {
                         const statusInfo = getOperatingStatus(amenity.operatingHours, currentTime);
+                        const isLast = index === buildingAmenities.length - 1;
 
                         return (
                           <li
                             key={amenity.id}
                             style={{
-                              borderBottom:
-                                buildingAmenities.length === 1
-                                  ? 'none'
-                                  : '1px solid #f0f0f0',
+                              borderBottom: isLast
+                                ? 'none'
+                                : '1px solid #f0f0f0',
                             }}
                           >
                             <Link
@@ -199,7 +199,7 @@ export default function AmenityList({
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                padding: '0.45rem 0',
+                                padding: 'calc(0.45rem + 4px) 0',
                                 textDecoration: 'none',
                                 color: 'inherit',
                               }}

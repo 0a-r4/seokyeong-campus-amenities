@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4R4YYMVM1Y"></script>
+    <script>
+      if (localStorage.getItem('ga_opt_out') === 'true') {
+        window['ga-disable-G-L6WGWDJ774'] = true;
+      }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L6WGWDJ774"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-4R4YYMVM1Y');
+      gtag('config', 'G-L6WGWDJ774');
     </script>
     
     <meta charset="UTF-8" />
