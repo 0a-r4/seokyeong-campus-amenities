@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import buildingsData from '../../data/buildings.json';
 import amenitiesData from '../../data/amenities.json';
+import { getOperatingStatus } from '../amenity/StatusIndicator.tsx';
 
 interface Building {
   id: string;
@@ -34,6 +35,7 @@ interface AmenityListProps {
   amenities?: Amenity[];
   selectedCategory?: string;
   searchQuery?: string;
+  isOpenOnly?: boolean;
 }
 
 export default function AmenityList({
@@ -41,8 +43,17 @@ export default function AmenityList({
   amenities = amenitiesData,
   selectedCategory = 'all',
   searchQuery = '',
+  isOpenOnly = false,
 }: AmenityListProps) {
   const [openBuildings, setOpenBuildings] = useState<Record<string, boolean>>({});
+  const [currentTime, setCurrentTime] = useState<Date>(() => new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
 
   const toggleBuilding = (buildingId: string) => {
     setOpenBuildings((prev) => ({
@@ -62,13 +73,19 @@ export default function AmenityList({
       if (trimmedQuery && !amenity.name.toLowerCase().includes(trimmedQuery)) {
         return false;
       }
+      if (isOpenOnly) {
+        const { status } = getOperatingStatus(amenity.operatingHours, currentTime);
+        if (status !== 'OPEN' && status !== 'CLOSING_SOON') {
+          return false;
+        }
+      }
       return true;
     });
   };
 
   const displayedBuildings = buildings.filter((building) => {
     const buildingAmenities = getBuildingAmenities(building.id);
-    if (trimmedQuery || selectedCategory !== 'all') {
+    if (trimmedQuery || selectedCategory !== 'all' || isOpenOnly) {
       return buildingAmenities.length > 0;
     }
     return true;
@@ -119,11 +136,11 @@ export default function AmenityList({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  padding: '0.75rem 1rem',
+                  padding: '0.7rem 1rem',
                   border: 'none',
                   backgroundColor: '#f9f9f9',
                   cursor: 'pointer',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   fontWeight: 600,
                   color: '#333',
                   textAlign: 'left',
@@ -151,7 +168,7 @@ export default function AmenityList({
               {isOpen && (
                 <div
                   style={{
-                    padding: '0.5rem 1rem',
+                    padding: '0.35rem 1rem',
                     borderTop: '1px solid #eee',
                   }}
                 >
@@ -163,35 +180,69 @@ export default function AmenityList({
                         padding: 0,
                       }}
                     >
-                      {buildingAmenities.map((amenity) => (
-                        <li
-                          key={amenity.id}
-                          style={{
-                            borderBottom:
-                              buildingAmenities.length === 1
-                                ? 'none'
-                                : '1px solid #f0f0f0',
-                            fontSize: '13px',
-                          }}
-                        >
-                          <Link
-                            to={`/${amenity.id}`}
+                      {buildingAmenities.map((amenity) => {
+                        const statusInfo = getOperatingStatus(amenity.operatingHours, currentTime);
+
+                        return (
+                          <li
+                            key={amenity.id}
                             style={{
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              alignItems: 'center',
-                              padding: '0.5rem 0',
-                              textDecoration: 'none',
-                              color: 'inherit',
+                              borderBottom:
+                                buildingAmenities.length === 1
+                                  ? 'none'
+                                  : '1px solid #f0f0f0',
                             }}
                           >
-                            <span style={{ color: '#333' }}>{amenity.name}</span>
-                            <span style={{ color: '#888', fontSize: '12px' }}>
-                              {amenity.floor}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
+                            <Link
+                              to={`/${amenity.id}`}
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                padding: '0.45rem 0',
+                                textDecoration: 'none',
+                                color: 'inherit',
+                              }}
+                            >
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: '0.5rem',
+                                }}
+                              >
+                                <span style={{ color: '#333', fontSize: '15px' }}>
+                                  {amenity.name}
+                                </span>
+                                <span
+                                  style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '0.25rem',
+                                    fontSize: '12.5px',
+                                    fontWeight: 600,
+                                    color: statusInfo.color,
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      width: '7px',
+                                      height: '7px',
+                                      borderRadius: '50%',
+                                      backgroundColor: statusInfo.color,
+                                      display: 'inline-block',
+                                    }}
+                                  />
+                                  {statusInfo.label}
+                                </span>
+                              </div>
+                              <span style={{ color: '#777', fontSize: '13px' }}>
+                                {amenity.floor}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   ) : (
                     <p
