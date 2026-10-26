@@ -40,7 +40,7 @@ export default function CategoryFilter({
   };
 
   return (
-    <nav aria-label="카테고리 필터">
+    <nav aria-label="카테고리 필터" style={{ position: 'relative' }}>
       <style>{`
         .category-filter-scroll::-webkit-scrollbar {
           display: none;
@@ -84,6 +84,18 @@ export default function CategoryFilter({
           );
         })}
       </div>
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: '40px',
+          background: 'linear-gradient(to right, rgba(255, 255, 255, 0), #fff)',
+          pointerEvents: 'none',
+        }}
+      />
     </nav>
   );
 }
