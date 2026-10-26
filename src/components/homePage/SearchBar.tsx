@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { MdSearch } from 'react-icons/md';
 
 interface SearchBarProps {
@@ -8,6 +8,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
   const [internalQuery, setInternalQuery] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
   const query = searchQuery !== undefined ? searchQuery : internalQuery;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,9 +23,14 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    inputRef.current?.focus();
     if (onSearch) {
       onSearch(query);
     }
+  };
+
+  const handleButtonClick = () => {
+    inputRef.current?.focus();
   };
 
   return (
@@ -42,6 +48,7 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
       }}
     >
       <input
+        ref={inputRef}
         type="text"
         value={query}
         onChange={handleChange}
@@ -59,6 +66,7 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
 
       <button
         type="submit"
+        onClick={handleButtonClick}
         aria-label="검색"
         style={{
           display: 'flex',
