@@ -5,13 +5,13 @@ const itemStyle: React.CSSProperties = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '12px 16px',
-  color: '#444444',
+  color: 'var(--text-primary)',
   textDecoration: 'none',
   fontSize: '14px',
 };
 
 const arrowStyle: React.CSSProperties = {
-  color: '#888888',
+  color: 'var(--text-secondary)',
   fontSize: '14px',
 };
 
@@ -20,9 +20,9 @@ export default function Footer() {
     <footer
       style={{
         padding: '1.5rem 1rem',
-        backgroundColor: '#eeeeee',
+        backgroundColor: 'var(--bg-footer)',
         marginTop: 'auto',
-        borderTop: '1px solid #d4d4d4',
+        borderTop: '1px solid var(--border-color)',
       }}
     >
       <div
@@ -34,15 +34,15 @@ export default function Footer() {
           gap: '1rem',
         }}
       >
-        <p style={{ margin: 0, fontWeight: 'bold', color: '#000000', fontSize: '15px' }}>
+        <p style={{ margin: 0, fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '15px' }}>
           서경대학교 편의시설 가이드
         </p>
 
         <div
           style={{
-            backgroundColor: '#f5f5f5',
+            backgroundColor: 'var(--bg-secondary)',
             borderRadius: '4px',
-            border: '1px solid #dcdcdc',
+            border: '1px solid var(--border-color)',
             overflow: 'hidden',
           }}
         >
@@ -50,14 +50,14 @@ export default function Footer() {
             href="https://forms.gle/JE9QnVKGMNgtqiDs9"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ ...itemStyle, borderBottom: '1px solid #e8e8e8' }}
+            style={{ ...itemStyle, borderBottom: '1px solid var(--border-subtle)' }}
           >
             <span>피드백 및 설문조사</span>
             <span style={arrowStyle}>›</span>
           </a>
           <a
             href="mailto:psw120407@skuniv.ac.kr"
-            style={{ ...itemStyle, borderBottom: '1px solid #e8e8e8' }}
+            style={{ ...itemStyle, borderBottom: '1px solid var(--border-subtle)' }}
           >
             <span>정보 수정 제안 / 문의하기</span>
             <span style={arrowStyle}>›</span>
@@ -66,7 +66,7 @@ export default function Footer() {
             href="https://github.com/0a-r4/seokyeong-campus-amenities"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ ...itemStyle, borderBottom: '1px solid #e8e8e8' }}
+            style={{ ...itemStyle, borderBottom: '1px solid var(--border-subtle)' }}
           >
             <span>GitHub</span>
             <span style={arrowStyle}>›</span>
@@ -81,7 +81,7 @@ export default function Footer() {
           style={{
             margin: 0,
             fontSize: '12px',
-            color: '#777777',
+            color: 'var(--text-secondary)',
             textAlign: 'center',
           }}
         >
@@ -91,4 +91,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

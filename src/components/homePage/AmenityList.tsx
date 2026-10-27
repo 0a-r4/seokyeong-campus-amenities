@@ -200,7 +200,7 @@ export default function AmenityList({
           style={{
             textAlign: 'center',
             fontSize: '16px',
-            color: '#888',
+            color: 'var(--text-secondary)',
             padding: '2.5rem 0',
             margin: 0,
           }}
@@ -216,9 +216,9 @@ export default function AmenityList({
             <div
               key={building.id}
               style={{
-                border: '1px solid #e0e0e0',
+                border: '1px solid var(--border-color)',
                 borderRadius: '4px',
-                backgroundColor: '#fff',
+                backgroundColor: 'var(--card-bg)',
                 overflow: 'hidden',
               }}
             >
@@ -233,11 +233,11 @@ export default function AmenityList({
                   justifyContent: 'space-between',
                   padding: '0.7rem 1rem',
                   border: 'none',
-                  backgroundColor: '#f9f9f9',
+                  backgroundColor: 'var(--bg-secondary)',
                   cursor: 'pointer',
                   fontSize: '16px',
                   fontWeight: 600,
-                  color: '#333',
+                  color: 'var(--text-primary)',
                   textAlign: 'left',
                 }}
               >
@@ -247,16 +247,16 @@ export default function AmenityList({
                     style={{
                       fontSize: '12px',
                       fontWeight: 400,
-                      color: '#666',
+                      color: 'var(--text-secondary)',
                     }}
                   >
                     ({buildingAmenities.length})
                   </span>
                 </div>
                 {isOpen ? (
-                  <MdExpandLess size="1.2rem" color="#666" />
+                  <MdExpandLess size="1.2rem" color="var(--text-secondary)" />
                 ) : (
-                  <MdExpandMore size="1.2rem" color="#666" />
+                  <MdExpandMore size="1.2rem" color="var(--text-secondary)" />
                 )}
               </button>
 
@@ -264,7 +264,7 @@ export default function AmenityList({
                 <div
                   style={{
                     padding: '0.35rem 1rem',
-                    borderTop: '1px solid #eee',
+                    borderTop: '1px solid var(--border-subtle)',
                   }}
                 >
                   {buildingAmenities.length > 0 ? (
@@ -285,7 +285,7 @@ export default function AmenityList({
                             style={{
                               borderBottom: isLast
                                 ? 'none'
-                                : '1px solid #f0f0f0',
+                                : '1px solid var(--border-subtle)',
                             }}
                           >
                             <Link
@@ -306,7 +306,7 @@ export default function AmenityList({
                                   gap: '0.5rem',
                                 }}
                               >
-                                <span style={{ color: '#333', fontSize: '15px' }}>
+                                <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>
                                   {amenity.name}
                                 </span>
                                 <span
@@ -331,7 +331,7 @@ export default function AmenityList({
                                   {statusInfo.label}
                                 </span>
                               </div>
-                              <span style={{ color: '#777', fontSize: '13px' }}>
+                              <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
                                 {amenity.floor}
                               </span>
                             </Link>
@@ -344,7 +344,7 @@ export default function AmenityList({
                       style={{
                         margin: '0.5rem 0',
                         fontSize: '13px',
-                        color: '#888',
+                        color: 'var(--text-secondary)',
                         textAlign: 'center',
                       }}
                     >

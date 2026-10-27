@@ -42,9 +42,9 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
         alignItems: 'center',
         margin: '0.8rem 1rem',
         padding: '0.4rem 0.6rem',
-        border: '1px solid #ccc',
+        border: '1px solid var(--border-input)',
         borderRadius: '4px',
-        backgroundColor: '#fff',
+        backgroundColor: 'var(--card-bg)',
       }}
     >
       <input
@@ -61,6 +61,7 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
           border: 'none',
           outline: 'none',
           backgroundColor: 'transparent',
+          color: 'var(--text-primary)',
         }}
       />
 
@@ -76,6 +77,7 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
           border: 'none',
           backgroundColor: 'transparent',
           cursor: 'pointer',
+          color: 'var(--text-primary)',
         }}
       >
         <MdSearch size="1.4rem" />

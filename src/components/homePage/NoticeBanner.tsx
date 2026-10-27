@@ -27,9 +27,9 @@ export default function NoticeBanner() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: '#fff3cd',
-        color: '#664d03',
-        borderBottom: '1px solid #ffe69c',
+        backgroundColor: 'var(--notice-bg)',
+        color: 'var(--notice-text)',
+        borderBottom: '1px solid var(--notice-border)',
         padding: '0.625rem 1rem',
         fontSize: '0.85rem',
         fontWeight: 600,
@@ -51,7 +51,7 @@ export default function NoticeBanner() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#664d03',
+          color: 'var(--notice-text)',
           flexShrink: 0,
         }}
       >
