@@ -5,7 +5,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import amenitiesData from '../data/amenities.json';
 import CookieOptOut from '../components/homePage/CookieOptOut.tsx';
-import 'github-markdown-css/github-markdown-light.css';
 import '../markdown-custom.css';
 
 const markdownModules = import.meta.glob<string>('../data/content/*.md', {
@@ -43,11 +42,11 @@ export default function AmenityDetailPage() {
             alignItems: 'center',
             gap: '0.5rem',
             padding: '0.6rem 1rem',
-            border: '1px solid #ccc',
+            border: '1px solid var(--link-border)',
             borderRadius: '4px',
-            backgroundColor: '#fff',
+            backgroundColor: 'var(--link-bg)',
             textDecoration: 'none',
-            color: '#222',
+            color: 'var(--link-color)',
             fontSize: '16px',
             fontWeight: 'bold',
             cursor: 'pointer',
@@ -63,7 +62,7 @@ export default function AmenityDetailPage() {
           style={{
             padding: '2rem 1rem',
             textAlign: 'center',
-            color: '#666',
+            color: 'var(--text-secondary)',
             fontSize: '14px',
           }}
         >
@@ -94,5 +93,6 @@ export default function AmenityDetailPage() {
     </div>
   );
 }
+
 
 

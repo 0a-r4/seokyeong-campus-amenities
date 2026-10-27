@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { MdSearch } from 'react-icons/md';
 
 interface SearchBarProps {
@@ -8,6 +8,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
   const [internalQuery, setInternalQuery] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
   const query = searchQuery !== undefined ? searchQuery : internalQuery;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,9 +23,14 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    inputRef.current?.focus();
     if (onSearch) {
       onSearch(query);
     }
+  };
+
+  const handleButtonClick = () => {
+    inputRef.current?.focus();
   };
 
   return (
@@ -36,12 +42,13 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
         alignItems: 'center',
         margin: '0.8rem 1rem',
         padding: '0.4rem 0.6rem',
-        border: '1px solid #ccc',
+        border: '1px solid var(--border-input)',
         borderRadius: '4px',
-        backgroundColor: '#fff',
+        backgroundColor: 'var(--card-bg)',
       }}
     >
       <input
+        ref={inputRef}
         type="text"
         value={query}
         onChange={handleChange}
@@ -54,11 +61,13 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
           border: 'none',
           outline: 'none',
           backgroundColor: 'transparent',
+          color: 'var(--text-primary)',
         }}
       />
 
       <button
         type="submit"
+        onClick={handleButtonClick}
         aria-label="검색"
         style={{
           display: 'flex',
@@ -68,6 +77,7 @@ export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
           border: 'none',
           backgroundColor: 'transparent',
           cursor: 'pointer',
+          color: 'var(--text-primary)',
         }}
       >
         <MdSearch size="1.4rem" />

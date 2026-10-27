@@ -65,14 +65,15 @@ export default function CookieOptOut() {
       style={{
         margin: '1.5rem 0',
         padding: '1rem',
-        border: '1px solid #ddd',
+        border: '1px solid var(--border-color)',
         borderRadius: '4px',
+        backgroundColor: 'var(--bg-secondary)',
       }}
     >
-      <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold', fontSize: '14px' }}>
+      <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold', fontSize: '14px', color: 'var(--text-primary)' }}>
         쿠키 수집 및 방문 분석 설정
       </p>
-      <p style={{ margin: '0 0 0.75rem 0', fontSize: '13px', color: '#555' }}>
+      <p style={{ margin: '0 0 0.75rem 0', fontSize: '13px', color: 'var(--text-secondary)' }}>
         현재 상태:{' '}
         <strong style={{ color: isOptedOut ? '#d9534f' : '#2e7d32' }}>
           {isOptedOut ? '수집 거부됨' : '수집 허용됨'}
@@ -83,7 +84,7 @@ export default function CookieOptOut() {
         aria-label="쿠키 수집 설정 스위치"
         style={{
           display: 'inline-flex',
-          border: '1px solid #ccc',
+          border: '1px solid var(--border-input)',
           borderRadius: '4px',
           overflow: 'hidden',
         }}
@@ -95,9 +96,9 @@ export default function CookieOptOut() {
             padding: '0.4rem 0.9rem',
             fontSize: '13px',
             border: 'none',
-            borderRight: '1px solid #ccc',
-            backgroundColor: !isOptedOut ? '#222' : '#f5f5f5',
-            color: !isOptedOut ? '#fff' : '#666',
+            borderRight: '1px solid var(--border-input)',
+            backgroundColor: !isOptedOut ? 'var(--button-selected-bg)' : 'var(--button-unselected-bg)',
+            color: !isOptedOut ? 'var(--button-selected-text)' : 'var(--button-unselected-text)',
             fontWeight: !isOptedOut ? 'bold' : 'normal',
             cursor: 'pointer',
           }}
@@ -111,8 +112,8 @@ export default function CookieOptOut() {
             padding: '0.4rem 0.9rem',
             fontSize: '13px',
             border: 'none',
-            backgroundColor: isOptedOut ? '#222' : '#f5f5f5',
-            color: isOptedOut ? '#fff' : '#666',
+            backgroundColor: isOptedOut ? 'var(--button-selected-bg)' : 'var(--button-unselected-bg)',
+            color: isOptedOut ? 'var(--button-selected-text)' : 'var(--button-unselected-text)',
             fontWeight: isOptedOut ? 'bold' : 'normal',
             cursor: 'pointer',
           }}

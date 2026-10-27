@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import buildingsData from '../../data/buildings.json';
 import amenitiesData from '../../data/amenities.json';
-import { getOperatingStatus } from '../amenity/StatusIndicator.tsx';
 
 interface Building {
   id: string;
@@ -15,19 +14,115 @@ interface OperatingHoursDay {
   close: string | boolean;
 }
 
+interface OperatingHours {
+  default?: OperatingHoursDay;
+  saturday?: OperatingHoursDay;
+  holiday?: OperatingHoursDay;
+  sunday?: OperatingHoursDay;
+  [key: string]: OperatingHoursDay | undefined;
+}
+
 interface Amenity {
   id: string;
   name: string;
   categoryId: string;
   buildingId: string;
   floor: string;
-  operatingHours?: {
-    default?: OperatingHoursDay;
-    saturday?: OperatingHoursDay;
-    holiday?: OperatingHoursDay;
-    sunday?: OperatingHoursDay;
-    [key: string]: OperatingHoursDay | undefined;
-  };
+  operatingHours?: OperatingHours;
+}
+
+type OperatingStatus = 'OPEN' | 'CLOSING_SOON' | 'CLOSED' | 'UNKNOWN';
+
+interface StatusInfo {
+  status: OperatingStatus;
+  label: string;
+  color: string;
+  operatingHoursText?: string;
+  remainingMinutes?: number;
+}
+
+function getTodaySchedule(
+  operatingHours?: OperatingHours,
+  now: Date = new Date()
+): OperatingHoursDay | null {
+  if (!operatingHours) return null;
+  const day = now.getDay();
+  const dayKeys = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const todayKey = dayKeys[day];
+
+  if (operatingHours[todayKey] !== undefined) {
+    return operatingHours[todayKey] ?? null;
+  }
+  if (day === 0 && operatingHours.sunday !== undefined) {
+    return operatingHours.sunday;
+  }
+  if (day === 6 && operatingHours.saturday !== undefined) {
+    return operatingHours.saturday;
+  }
+  return operatingHours.default ?? null;
+}
+
+function getOperatingStatus(
+  operatingHours?: OperatingHours,
+  now: Date = new Date()
+): StatusInfo {
+  const schedule = getTodaySchedule(operatingHours, now);
+  if (!schedule) {
+    return { status: 'UNKNOWN', label: '운영 정보 없음', color: '#6b7280' };
+  }
+
+  const { open, close } = schedule;
+  if (open === false || close === false) {
+    return { status: 'CLOSED', label: '운영 종료', color: '#dc2626' };
+  }
+  if (typeof open !== 'string' || typeof close !== 'string') {
+    return { status: 'UNKNOWN', label: '운영 정보 없음', color: '#6b7280' };
+  }
+
+  const [openH, openM] = open.split(':').map((v) => parseInt(v, 10));
+  const [closeH, closeM] = close.split(':').map((v) => parseInt(v, 10));
+
+  if (Number.isNaN(openH) || Number.isNaN(openM) || Number.isNaN(closeH) || Number.isNaN(closeM)) {
+    return { status: 'UNKNOWN', label: '운영 정보 없음', color: '#6b7280' };
+  }
+
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const openMinutes = openH * 60 + openM;
+  const closeMinutes = closeH * 60 + closeM;
+  const operatingHoursText = `${open} ~ ${close}`;
+
+  if (openMinutes <= closeMinutes) {
+    if (currentMinutes < openMinutes || currentMinutes >= closeMinutes) {
+      return { status: 'CLOSED', label: '운영 종료', color: '#dc2626', operatingHoursText };
+    }
+    const diff = closeMinutes - currentMinutes;
+    if (diff <= 60) {
+      return {
+        status: 'CLOSING_SOON',
+        label: `마감 ${diff}분 전`,
+        color: '#ea580c',
+        operatingHoursText,
+        remainingMinutes: diff,
+      };
+    }
+    return { status: 'OPEN', label: '운영중', color: '#16a34a', operatingHoursText };
+  }
+
+  const isOperating = currentMinutes >= openMinutes || currentMinutes < closeMinutes;
+  if (!isOperating) {
+    return { status: 'CLOSED', label: '운영 종료', color: '#dc2626', operatingHoursText };
+  }
+  const diff = currentMinutes >= openMinutes ? 1440 - currentMinutes + closeMinutes : closeMinutes - currentMinutes;
+  if (diff <= 60) {
+    return {
+      status: 'CLOSING_SOON',
+      label: `마감 ${diff}분 전`,
+      color: '#ea580c',
+      operatingHoursText,
+      remainingMinutes: diff,
+    };
+  }
+  return { status: 'OPEN', label: '운영중', color: '#16a34a', operatingHoursText };
 }
 
 interface AmenityListProps {
@@ -105,7 +200,7 @@ export default function AmenityList({
           style={{
             textAlign: 'center',
             fontSize: '16px',
-            color: '#888',
+            color: 'var(--text-secondary)',
             padding: '2.5rem 0',
             margin: 0,
           }}
@@ -121,9 +216,9 @@ export default function AmenityList({
             <div
               key={building.id}
               style={{
-                border: '1px solid #e0e0e0',
+                border: '1px solid var(--border-color)',
                 borderRadius: '4px',
-                backgroundColor: '#fff',
+                backgroundColor: 'var(--card-bg)',
                 overflow: 'hidden',
               }}
             >
@@ -138,11 +233,11 @@ export default function AmenityList({
                   justifyContent: 'space-between',
                   padding: '0.7rem 1rem',
                   border: 'none',
-                  backgroundColor: '#f9f9f9',
+                  backgroundColor: 'var(--bg-secondary)',
                   cursor: 'pointer',
                   fontSize: '16px',
                   fontWeight: 600,
-                  color: '#333',
+                  color: 'var(--text-primary)',
                   textAlign: 'left',
                 }}
               >
@@ -152,16 +247,16 @@ export default function AmenityList({
                     style={{
                       fontSize: '12px',
                       fontWeight: 400,
-                      color: '#666',
+                      color: 'var(--text-secondary)',
                     }}
                   >
                     ({buildingAmenities.length})
                   </span>
                 </div>
                 {isOpen ? (
-                  <MdExpandLess size="1.2rem" color="#666" />
+                  <MdExpandLess size="1.2rem" color="var(--text-secondary)" />
                 ) : (
-                  <MdExpandMore size="1.2rem" color="#666" />
+                  <MdExpandMore size="1.2rem" color="var(--text-secondary)" />
                 )}
               </button>
 
@@ -169,7 +264,7 @@ export default function AmenityList({
                 <div
                   style={{
                     padding: '0.35rem 1rem',
-                    borderTop: '1px solid #eee',
+                    borderTop: '1px solid var(--border-subtle)',
                   }}
                 >
                   {buildingAmenities.length > 0 ? (
@@ -190,7 +285,7 @@ export default function AmenityList({
                             style={{
                               borderBottom: isLast
                                 ? 'none'
-                                : '1px solid #f0f0f0',
+                                : '1px solid var(--border-subtle)',
                             }}
                           >
                             <Link
@@ -211,7 +306,7 @@ export default function AmenityList({
                                   gap: '0.5rem',
                                 }}
                               >
-                                <span style={{ color: '#333', fontSize: '15px' }}>
+                                <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>
                                   {amenity.name}
                                 </span>
                                 <span
@@ -236,7 +331,7 @@ export default function AmenityList({
                                   {statusInfo.label}
                                 </span>
                               </div>
-                              <span style={{ color: '#777', fontSize: '13px' }}>
+                              <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
                                 {amenity.floor}
                               </span>
                             </Link>
@@ -249,7 +344,7 @@ export default function AmenityList({
                       style={{
                         margin: '0.5rem 0',
                         fontSize: '13px',
-                        color: '#888',
+                        color: 'var(--text-secondary)',
                         textAlign: 'center',
                       }}
                     >
