@@ -85,7 +85,7 @@ export default function Footer() {
             textAlign: 'center',
           }}
         >
-          © 2026 서경대 편의시설 가이드. MIT Licensed.
+          © 2026 서경대학교 편의시설 가이드. MIT Licensed.
         </p>
       </div>
     </footer>
