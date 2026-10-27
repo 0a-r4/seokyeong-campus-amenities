@@ -89,9 +89,15 @@ export default function CategoryFilter({
                 padding: '0.4rem 0.8rem',
                 fontSize: '13px',
                 borderRadius: '4px',
-                border: isSelected ? '1px solid #333' : '1px solid #ccc',
-                backgroundColor: isSelected ? '#333' : '#f5f5f5',
-                color: isSelected ? '#fff' : '#333',
+                border: isSelected
+                  ? '1px solid var(--button-selected-bg)'
+                  : '1px solid var(--button-unselected-border)',
+                backgroundColor: isSelected
+                  ? 'var(--button-selected-bg)'
+                  : 'var(--button-unselected-bg)',
+                color: isSelected
+                  ? 'var(--button-selected-text)'
+                  : 'var(--button-unselected-text)',
                 cursor: 'pointer',
               }}
             >
@@ -109,7 +115,7 @@ export default function CategoryFilter({
             left: 0,
             bottom: '0.9rem',
             width: '16px',
-            background: 'linear-gradient(to right, #fff, rgba(255, 255, 255, 0))',
+            background: 'linear-gradient(to right, var(--bg-primary), transparent)',
             pointerEvents: 'none',
           }}
         />
@@ -123,7 +129,7 @@ export default function CategoryFilter({
             right: 0,
             bottom: '0.9rem',
             width: '16px',
-            background: 'linear-gradient(to right, rgba(255, 255, 255, 0), #fff)',
+            background: 'linear-gradient(to right, transparent, var(--bg-primary))',
             pointerEvents: 'none',
           }}
         />
