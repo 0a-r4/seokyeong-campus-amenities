@@ -13,10 +13,21 @@ export default function CategoryFilter({
   const [internalCategory, setInternalCategory] = useState<string>('all');
   const activeCategory = selectedCategory ?? internalCategory;
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(false);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 2);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+  };
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+
+    checkScroll();
 
     const handleWheel = (e: WheelEvent) => {
       if (e.deltaY !== 0) {
@@ -26,8 +37,13 @@ export default function CategoryFilter({
     };
 
     el.addEventListener('wheel', handleWheel, { passive: false });
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+
     return () => {
       el.removeEventListener('wheel', handleWheel);
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
     };
   }, []);
 
@@ -84,18 +100,34 @@ export default function CategoryFilter({
           );
         })}
       </div>
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: '40px',
-          background: 'linear-gradient(to right, rgba(255, 255, 255, 0), #fff)',
-          pointerEvents: 'none',
-        }}
-      />
+      {canScrollLeft && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: '0.9rem',
+            width: '16px',
+            background: 'linear-gradient(to right, #fff, rgba(255, 255, 255, 0))',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+      {canScrollRight && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: '0.9rem',
+            width: '16px',
+            background: 'linear-gradient(to right, rgba(255, 255, 255, 0), #fff)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
     </nav>
   );
 }
