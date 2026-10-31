@@ -52,7 +52,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             style={{ ...itemStyle, borderBottom: '1px solid var(--border-subtle)' }}
           >
-            <span>피드백 및 설문조사</span>
+            <span>만족도 조사 및 피드백</span>
             <span style={arrowStyle}>›</span>
           </a>
           <a
@@ -83,6 +83,8 @@ export default function Footer() {
             fontSize: '12px',
             color: 'var(--text-secondary)',
             textAlign: 'center',
+            fontFamily:
+              'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Malgun Gothic", sans-serif',
           }}
         >
           © 2026 서경대학교 편의시설 가이드. MIT Licensed.
