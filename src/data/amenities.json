@@ -23,5 +23,82 @@
                 "close": false
             }
         }
+    },
+    {
+        "id": "sinhan-bank",
+        "name": "신한은행 서경대학교 출장소",
+        "categoryId": "finance",
+        "buildingId": "yudam",
+        "floor": "3층",
+        "operatingHours": {
+            "default": {
+                "open": "06:00",
+                "close": "16:00"
+            },
+            "saturday": {
+                "open": false,
+                "close": false
+            },
+            "holiday": {
+                "open": false,
+                "close": false
+            },
+            "sunday": {
+                "open": false,
+                "close": false
+            }
+        }
+    },
+    {
+        "id": "post-office",
+        "name": "우체국",
+        "categoryId": "finance",
+        "buildingId": "yudam",
+        "floor": "3층",
+        "operatingHours": {
+            "default": {
+                "open": "06:00",
+                "close": "21:00"
+            },
+            "saturday": {
+                "open": false,
+                "close": false
+            },
+            "holiday": {
+                "open": false,
+                "close": false
+            },
+            "sunday": {
+                "open": false,
+                "close": false
+            }
+        }
+    },
+
+    {
+        "id": "gs25-convenience-store",
+        "name": "GS25 편의점",
+        "categoryId": "mart",
+        "buildingId": "bugak",
+        "floor": "지하 1층",
+        "operatingHours": {
+            "default": {
+                "open": "00:00",
+                "close": "24:00"
+            }
+        }
+    },
+    {
+        "id": "self-service-printer",
+        "name": "무인 프린터기",
+        "categoryId": "print",
+        "buildingId": "bugak",
+        "floor": "1층",
+        "operatingHours": {
+            "default": {
+                "open": true,
+                "close": true
+            }
+        }
     }
 ]

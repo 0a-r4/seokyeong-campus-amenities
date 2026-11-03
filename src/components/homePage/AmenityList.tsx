@@ -72,6 +72,9 @@ function getOperatingStatus(
   }
 
   const { open, close } = schedule;
+  if ((open === true || open === 'true') && (close === true || close === 'true')) {
+    return { status: 'OPEN', label: '운영중', color: '#16a34a' };
+  }
   if (open === false || close === false) {
     return { status: 'CLOSED', label: '운영 종료', color: '#dc2626' };
   }
