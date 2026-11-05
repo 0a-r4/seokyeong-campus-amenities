@@ -8,6 +8,7 @@
 <details>
 <summary>찾아가는 방법</summary>
 
+![이미지](/AmenityImages/seokyeong-sporex/1.webp)
 아직 없습니다.
 
 </details>
