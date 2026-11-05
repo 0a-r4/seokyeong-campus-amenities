@@ -1,171 +1,197 @@
 [
-    {
-        "id": "seokyeong-sporex",
-        "name": "서경스포렉스",
-        "categoryId": "sports",
-        "buildingId": "yudam",
-        "floor": "3층",
-        "operatingHours": {
-            "default": {
-                "open": "06:00",
-                "close": "23:00"
-            },
-            "saturday": {
-                "open": "09:00",
-                "close": "21:00"
-            },
-            "holiday": {
-                "open": "09:00",
-                "close": "21:00"
-            },
-            "sunday": {
-                "open": false,
-                "close": false
-            }
-        }
-    },
-    {
-        "id": "sinhan-bank",
-        "name": "신한은행 서경대학교 출장소",
-        "categoryId": "finance",
-        "buildingId": "yudam",
-        "floor": "3층",
-        "operatingHours": {
-            "default": {
-                "open": "06:00",
-                "close": "16:00"
-            },
-            "saturday": {
-                "open": false,
-                "close": false
-            },
-            "holiday": {
-                "open": false,
-                "close": false
-            },
-            "sunday": {
-                "open": false,
-                "close": false
-            }
-        }
-    },
-    {
-        "id": "post-office",
-        "name": "우체국",
-        "categoryId": "finance",
-        "buildingId": "yudam",
-        "floor": "3층",
-        "operatingHours": {
-            "default": {
-                "open": "06:00",
-                "close": "21:00"
-            },
-            "saturday": {
-                "open": false,
-                "close": false
-            },
-            "holiday": {
-                "open": false,
-                "close": false
-            },
-            "sunday": {
-                "open": false,
-                "close": false
-            }
-        }
-    },
-
-
-    {
+  {
+    "buildingId": "daeil",
+    "buildingName": "대일관",
+    "amenities": []
+  },
+  {
+    "buildingId": "bugak",
+    "buildingName": "북악관",
+    "amenities": [
+      {
         "id": "gs25-convenience-store",
         "name": "GS25 편의점",
         "categoryId": "mart",
-        "buildingId": "bugak",
         "floor": "지하 1층",
         "operatingHours": {
-            "default": {
-                "open": "00:00",
-                "close": "24:00"
-            }
+          "default": {
+            "open": "00:00",
+            "close": "24:00"
+          }
         }
-    },
-    {
+      },
+      {
         "id": "self-service-printer",
         "name": "무인 프린터기",
         "categoryId": "print",
-        "buildingId": "bugak",
         "floor": "1층",
         "operatingHours": {
-            "default": {
-                "open": true,
-                "close": true
-            }
+          "default": {
+            "open": true,
+            "close": true
+          }
         }
-    },
-
-    {
+      },
+      {
         "id": "bugak-AED",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
-        "buildingId": "bugak",
         "floor": "1층",
         "operatingHours": {
-            "default": {
-                "open": true,
-                "close": true
-            }
+          "default": {
+            "open": true,
+            "close": true
+          }
         }
-    },
-    {
-        "id": "cheongun-AED",
-        "name": "AED(자동심장충격기)",
-        "categoryId": "safety",
-        "buildingId": "cheongun",
-        "floor": "?층",
+      }
+    ]
+  },
+  {
+    "buildingId": "yudam",
+    "buildingName": "유담관",
+    "amenities": [
+      {
+        "id": "seokyeong-sporex",
+        "name": "서경스포렉스",
+        "categoryId": "sports",
+        "floor": "3층",
         "operatingHours": {
-            "default": {
-                "open": true,
-                "close": true
-            }
+          "default": {
+            "open": "06:00",
+            "close": "23:00"
+          },
+          "saturday": {
+            "open": "09:00",
+            "close": "21:00"
+          },
+          "holiday": {
+            "open": "09:00",
+            "close": "21:00"
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
         }
-    },
-    {
-        "id": "hyein-AED",
-        "name": "AED(자동심장충격기)",
-        "categoryId": "safety",
-        "buildingId": "hyein",
-        "floor": "1층",
+      },
+      {
+        "id": "sinhan-bank",
+        "name": "신한은행 서경대학교 출장소",
+        "categoryId": "finance",
+        "floor": "3층",
         "operatingHours": {
-            "default": {
-                "open": true,
-                "close": true
-            }
+          "default": {
+            "open": "06:00",
+            "close": "16:00"
+          },
+          "saturday": {
+            "open": false,
+            "close": false
+          },
+          "holiday": {
+            "open": false,
+            "close": false
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
         }
-    },
-    {
+      },
+      {
+        "id": "post-office",
+        "name": "우체국",
+        "categoryId": "finance",
+        "floor": "3층",
+        "operatingHours": {
+          "default": {
+            "open": "06:00",
+            "close": "21:00"
+          },
+          "saturday": {
+            "open": false,
+            "close": false
+          },
+          "holiday": {
+            "open": false,
+            "close": false
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
+        }
+      },
+      {
         "id": "yudam-3floor--AED",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
-        "buildingId": "yudam",
         "floor": "3층",
         "operatingHours": {
-            "default": {
-                "open": true,
-                "close": true
-            }
+          "default": {
+            "open": true,
+            "close": true
+          }
         }
-    },
-    {
+      },
+      {
         "id": "yudam-9floor-AED",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
-        "buildingId": "yudam",
         "floor": "9층",
         "operatingHours": {
-            "default": {
-                "open": true,
-                "close": true
-            }
+          "default": {
+            "open": true,
+            "close": true
+          }
         }
-    }
+      }
+    ]
+  },
+  {
+    "buildingId": "eunju-2",
+    "buildingName": "은주2관",
+    "amenities": []
+  },
+  {
+    "buildingId": "cheongun",
+    "buildingName": "청운관",
+    "amenities": [
+      {
+        "id": "cheongun-AED",
+        "name": "AED(자동심장충격기)",
+        "categoryId": "safety",
+        "floor": "?층",
+        "operatingHours": {
+          "default": {
+            "open": true,
+            "close": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "buildingId": "hanlim",
+    "buildingName": "한림관",
+    "amenities": []
+  },
+  {
+    "buildingId": "hyein",
+    "buildingName": "혜인관",
+    "amenities": [
+      {
+        "id": "hyein-AED",
+        "name": "AED(자동심장충격기)",
+        "categoryId": "safety",
+        "floor": "1층",
+        "operatingHours": {
+          "default": {
+            "open": true,
+            "close": true
+          }
+        }
+      }
+    ]
+  }
 ]

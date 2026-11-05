@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
-import buildingsData from '../../data/buildings.json';
 import amenitiesData from '../../data/amenities.json';
-
-interface Building {
-  id: string;
-  name: string;
-}
 
 interface OperatingHoursDay {
   open: string | boolean;
@@ -26,9 +20,14 @@ interface Amenity {
   id: string;
   name: string;
   categoryId: string;
-  buildingId: string;
   floor: string;
   operatingHours?: OperatingHours;
+}
+
+interface BuildingWithAmenities {
+  buildingId: string;
+  buildingName: string;
+  amenities: Amenity[];
 }
 
 type OperatingStatus = 'OPEN' | 'CLOSING_SOON' | 'CLOSED' | 'UNKNOWN';
@@ -129,16 +128,14 @@ function getOperatingStatus(
 }
 
 interface AmenityListProps {
-  buildings?: Building[];
-  amenities?: Amenity[];
+  buildingsWithAmenities?: BuildingWithAmenities[];
   selectedCategory?: string;
   searchQuery?: string;
   isOpenOnly?: boolean;
 }
 
 export default function AmenityList({
-  buildings = buildingsData,
-  amenities = amenitiesData,
+  buildingsWithAmenities = amenitiesData,
   selectedCategory = 'all',
   searchQuery = '',
   isOpenOnly = false,
@@ -162,9 +159,8 @@ export default function AmenityList({
 
   const trimmedQuery = searchQuery.trim().toLowerCase();
 
-  const getBuildingAmenities = (buildingId: string) => {
+  const getFilteredAmenities = (amenities: Amenity[]) => {
     return amenities.filter((amenity) => {
-      if (amenity.buildingId !== buildingId) return false;
       if (selectedCategory !== 'all' && amenity.categoryId !== selectedCategory) {
         return false;
       }
@@ -181,8 +177,8 @@ export default function AmenityList({
     });
   };
 
-  const displayedBuildings = buildings.filter((building) => {
-    const buildingAmenities = getBuildingAmenities(building.id);
+  const displayedBuildings = buildingsWithAmenities.filter((building) => {
+    const buildingAmenities = getFilteredAmenities(building.amenities);
     if (trimmedQuery || selectedCategory !== 'all' || isOpenOnly) {
       return buildingAmenities.length > 0;
     }
@@ -212,12 +208,12 @@ export default function AmenityList({
         </p>
       ) : (
         displayedBuildings.map((building) => {
-          const isOpen = !!openBuildings[building.id];
-          const buildingAmenities = getBuildingAmenities(building.id);
+          const isOpen = !!openBuildings[building.buildingId];
+          const buildingAmenities = getFilteredAmenities(building.amenities);
 
           return (
             <div
-              key={building.id}
+              key={building.buildingId}
               style={{
                 border: '1px solid var(--border-color)',
                 borderRadius: '4px',
@@ -227,7 +223,7 @@ export default function AmenityList({
             >
               <button
                 type="button"
-                onClick={() => toggleBuilding(building.id)}
+                onClick={() => toggleBuilding(building.buildingId)}
                 aria-expanded={isOpen}
                 style={{
                   width: '100%',
@@ -245,7 +241,7 @@ export default function AmenityList({
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span>{building.name}</span>
+                  <span>{building.buildingName}</span>
                   <span
                     style={{
                       fontSize: '12px',
