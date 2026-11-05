@@ -43,7 +43,7 @@ export default function OpenOnlyFilter({
           padding: 0,
           borderRadius: '9999px',
           border: 'none',
-          backgroundColor: isChecked ? '#333' : '#e0e0e0',
+          backgroundColor: isChecked ? 'var(--button-selected-bg)' : 'var(--switch-off-bg)',
           cursor: 'pointer',
           transition: 'background-color 0.2s',
           flexShrink: 0,
@@ -69,7 +69,7 @@ export default function OpenOnlyFilter({
         onClick={handleToggle}
         style={{
           fontSize: '13px',
-          color: '#333',
+          color: 'var(--text-primary)',
           cursor: 'pointer',
           userSelect: 'none',
         }}

@@ -27,9 +27,9 @@ export default function NoticeBanner() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: '#fff3cd',
-        color: '#664d03',
-        borderBottom: '1px solid #ffe69c',
+        backgroundColor: 'var(--notice-bg)',
+        color: 'var(--notice-text)',
+        borderBottom: '1px solid var(--notice-border)',
         padding: '0.625rem 1rem',
         fontSize: '0.85rem',
         fontWeight: 600,
@@ -37,7 +37,7 @@ export default function NoticeBanner() {
       }}
     >
       <span style={{ wordBreak: 'keep-all', marginRight: '0.5rem' }}>
-        본 사이트는 수업 프로젝트용으로 실제 정보와 차이가 있을 수 있습니다.
+        본 사이트는 비공식 가이드입니다. 최신 정보를 반영하려 노력하고 있으나, 오차가 있을 수 있으니 참고용으로 활용해 주세요.
       </span>
       <button
         type="button"
@@ -51,7 +51,7 @@ export default function NoticeBanner() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#664d03',
+          color: 'var(--notice-text)',
           flexShrink: 0,
         }}
       >
