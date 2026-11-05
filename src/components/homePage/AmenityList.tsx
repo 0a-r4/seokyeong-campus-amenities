@@ -4,16 +4,16 @@ import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import amenitiesData from '../../data/amenities.json';
 
 interface OperatingHoursDay {
-  open: string | boolean;
-  close: string | boolean;
+  open: string | boolean | null;
+  close: string | boolean | null;
 }
 
 interface OperatingHours {
-  default?: OperatingHoursDay;
-  saturday?: OperatingHoursDay;
-  holiday?: OperatingHoursDay;
-  sunday?: OperatingHoursDay;
-  [key: string]: OperatingHoursDay | undefined;
+  default?: OperatingHoursDay | null;
+  saturday?: OperatingHoursDay | null;
+  holiday?: OperatingHoursDay | null;
+  sunday?: OperatingHoursDay | null;
+  [key: string]: OperatingHoursDay | null | undefined;
 }
 
 interface Amenity {
@@ -53,10 +53,10 @@ function getTodaySchedule(
     return operatingHours[todayKey] ?? null;
   }
   if (day === 0 && operatingHours.sunday !== undefined) {
-    return operatingHours.sunday;
+    return operatingHours.sunday ?? null;
   }
   if (day === 6 && operatingHours.saturday !== undefined) {
-    return operatingHours.saturday;
+    return operatingHours.saturday ?? null;
   }
   return operatingHours.default ?? null;
 }
@@ -71,6 +71,9 @@ function getOperatingStatus(
   }
 
   const { open, close } = schedule;
+  if (open === null || close === null) {
+    return { status: 'UNKNOWN', label: '운영 정보 없음', color: '#6b7280' };
+  }
   if ((open === true || open === 'true') && (close === true || close === 'true')) {
     return { status: 'OPEN', label: '운영중', color: '#16a34a' };
   }
