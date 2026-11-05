@@ -2,14 +2,27 @@
   {
     "buildingId": "daeil",
     "buildingName": "대일관",
-    "amenities": []
+    "amenities": [
+      {
+        "id": "cafe-sp",
+        "name": "카페 SP",
+        "categoryId": "cafe",
+        "floor": "지하 2층",
+        "operatingHours": {
+          "default": {
+            "open": null,
+            "close": null
+          }
+        }
+      }
+    ]
   },
   {
     "buildingId": "bugak",
     "buildingName": "북악관",
     "amenities": [
       {
-        "id": "gs25-convenience-store",
+        "id": "gs25",
         "name": "GS25 편의점",
         "categoryId": "mart",
         "floor": "지하 1층",
@@ -21,19 +34,31 @@
         }
       },
       {
-        "id": "self-service-printer",
-        "name": "무인 프린터기",
-        "categoryId": "print",
-        "floor": "1층",
+        "id": "bugak-skon-free-zone",
+        "name": "스콘프리존",
+        "categoryId": "lounge",
+        "floor": "지하 1층",
         "operatingHours": {
           "default": {
-            "open": true,
-            "close": true
+            "open": null,
+            "close": null
           }
         }
       },
       {
-        "id": "bugak-AED",
+        "id": "self-service-printer",
+        "name": "무인 프린터",
+        "categoryId": "print",
+        "floor": "1층",
+        "operatingHours": {
+          "default": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "bugak-aed",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
         "floor": "1층",
@@ -62,11 +87,11 @@
           },
           "saturday": {
             "open": "09:00",
-            "close": "21:00"
+            "close": "18:00"
           },
           "holiday": {
             "open": "09:00",
-            "close": "21:00"
+            "close": "18:00"
           },
           "sunday": {
             "open": false,
@@ -81,7 +106,7 @@
         "floor": "3층",
         "operatingHours": {
           "default": {
-            "open": "06:00",
+            "open": "09:00",
             "close": "16:00"
           },
           "saturday": {
@@ -105,12 +130,48 @@
         "floor": "3층",
         "operatingHours": {
           "default": {
-            "open": "06:00",
-            "close": "21:00"
+            "open": "09:00",
+            "close": "18:00"
           },
           "saturday": {
-            "open": false,
-            "close": false
+            "open": null,
+            "close": null
+          },
+          "holiday": {
+            "open": null,
+            "close": null
+          },
+          "sunday": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "miso-restaurant",
+        "name": "미소식당",
+        "categoryId": "food",
+        "floor": "3층",
+        "operatingHours": {
+          "default": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "beautyshop-black",
+        "name": "뷰티샵 블랙",
+        "categoryId": "service",
+        "floor": "9층",
+        "operatingHours": {
+          "default": {
+            "open": "10:00",
+            "close": "20:00"
+          },
+          "saturday": {
+            "open": "10:00",
+            "close": "18:00"
           },
           "holiday": {
             "open": false,
@@ -123,7 +184,95 @@
         }
       },
       {
-        "id": "yudam-3floor--AED",
+        "id": "cafe-laurel",
+        "name": "카페 로렐",
+        "categoryId": "cafe",
+        "floor": "9층",
+        "operatingHours": {
+          "default": {
+            "open": "08:00",
+            "close": "17:00"
+          },
+          "friday": {
+            "open": "08:00",
+            "close": "16:00"
+          },
+          "saturday": {
+            "open": "08:00",
+            "close": "16:00"
+          },
+          "sunday": {
+            "open": "08:00",
+            "close": "16:00"
+          },
+          "holiday": {
+            "open": "08:00",
+            "close": "16:00"
+          }
+        }
+      },
+      {
+        "id": "cafeteria",
+        "name": "매점",
+        "categoryId": "mart",
+        "floor": "9층",
+        "operatingHours": {
+          "default": {
+            "open": "09:00",
+            "close": "20:30"
+          },
+          "saturday": {
+            "open": false,
+            "close": false
+          },
+          "holiday": {
+            "open": null,
+            "close": null
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
+        }
+      },
+      {
+        "id": "career-center",
+        "name": "대학일자리플러스본부",
+        "categoryId": "lounge",
+        "floor": "9층",
+        "operatingHours": {
+          "default": {
+            "open": "09:00",
+            "close": "18:00"
+          },
+          "saturday": {
+            "open": null,
+            "close": null
+          },
+          "holiday": {
+            "open": null,
+            "close": null
+          },
+          "sunday": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "skon-terrace",
+        "name": "스콘 테라스",
+        "categoryId": "lounge",
+        "floor": "9층",
+        "operatingHours": {
+          "default": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "yudam-aed-floor3",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
         "floor": "3층",
@@ -135,7 +284,7 @@
         }
       },
       {
-        "id": "yudam-9floor-AED",
+        "id": "yudam-aed-floor9",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
         "floor": "9층",
@@ -158,6 +307,174 @@
     "buildingName": "청운관",
     "amenities": [
       {
+        "id": "seokyeong_beauty_spa",
+        "name": "서경 더뷰티샵 에스테틱 앤 스파",
+        "categoryId": "service",
+        "floor": "L층",
+        "operatingHours": {
+          "default": {
+            "open": "10:00",
+            "close": "20:00"
+          },
+          "saturday": {
+            "open": "10:00",
+            "close": "16:00"
+          },
+          "holiday": {
+            "open": false,
+            "close": false
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
+        }
+      },
+      {
+        "id": "emart24",
+        "name": "이마트24 편의점",
+        "categoryId": "mart",
+        "floor": "1층",
+        "operatingHours": {
+          "default": {
+            "open": "00:00",
+            "close": "24:00"
+          }
+        }
+      },
+      {
+        "id": "no-brand-burger",
+        "name": "노브랜드 버거",
+        "categoryId": "food",
+        "floor": "1층",
+        "operatingHours": {
+          "default": {
+            "open": "10:00",
+            "close": "18:00"
+          },
+          "saturday": {
+            "open": null,
+            "close": null
+          },
+          "holiday": {
+            "open": null,
+            "close": null
+          },
+          "sunday": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "suyuri-udon",
+        "name": "수유리 우동집",
+        "categoryId": "food",
+        "floor": "1층",
+        "operatingHours": {
+          "default": {
+            "open": "10:00",
+            "close": "18:00"
+          },
+          "saturday": {
+            "open": false,
+            "close": false
+          },
+          "holiday": {
+            "open": false,
+            "close": false
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
+        }
+      },
+      {
+        "id": "cheongun-skon-free-zone",
+        "name": "스콘프리존",
+        "categoryId": "lounge",
+        "floor": "1층",
+        "operatingHours": {
+          "default": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "book-store",
+        "name": "서점",
+        "categoryId": "service",
+        "floor": "2층",
+        "operatingHours": {
+          "default": {
+            "open": "08:30",
+            "close": "18:30"
+          },
+          "saturday": {
+            "open": null,
+            "close": null
+          },
+          "holiday": {
+            "open": null,
+            "close": null
+          },
+          "sunday": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "print-shop",
+        "name": "인쇄소",
+        "categoryId": "print",
+        "floor": "2층",
+        "operatingHours": {
+          "default": {
+            "open": "09:00",
+            "close": "18:30"
+          },
+          "saturday": {
+            "open": null,
+            "close": null
+          },
+          "holiday": {
+            "open": null,
+            "close": null
+          },
+          "sunday": {
+            "open": null,
+            "close": null
+          }
+        }
+      },
+      {
+        "id": "health-room",
+        "name": "보건실",
+        "categoryId": "safety",
+        "floor": "3층",
+        "operatingHours": {
+          "default": {
+            "open": "09:00",
+            "close": "18:00"
+          },
+          "saturday": {
+            "open": false,
+            "close": false
+          },
+          "holiday": {
+            "open": false,
+            "close": false
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
+        }
+      },
+      {
         "id": "cheongun-AED",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
@@ -174,14 +491,39 @@
   {
     "buildingId": "hanlim",
     "buildingName": "한림관",
-    "amenities": []
+    "amenities": [
+      {
+        "id": "hanlim-restaurant",
+        "name": "한림관 교직원/학생식당",
+        "categoryId": "food",
+        "floor": "2층",
+        "operatingHours": {
+          "default": {
+            "open": "10:00",
+            "close": "15:00"
+          },
+          "saturday": {
+            "open": false,
+            "close": false
+          },
+          "holiday": {
+            "open": false,
+            "close": false
+          },
+          "sunday": {
+            "open": false,
+            "close": false
+          }
+        }
+      }
+    ]
   },
   {
     "buildingId": "hyein",
     "buildingName": "혜인관",
     "amenities": [
       {
-        "id": "hyein-AED",
+        "id": "hyein-aed",
         "name": "AED(자동심장충격기)",
         "categoryId": "safety",
         "floor": "1층",
