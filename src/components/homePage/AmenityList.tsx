@@ -317,9 +317,12 @@ export default function AmenityList({
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '0.25rem',
-                                    fontSize: '12.5px',
+                                    fontSize: '12px',
                                     fontWeight: 600,
+                                    lineHeight: 1,
                                     color: statusInfo.color,
+                                    whiteSpace: 'nowrap',
+                                    flexShrink: 0,
                                   }}
                                 >
                                   <span
@@ -329,9 +332,18 @@ export default function AmenityList({
                                       borderRadius: '50%',
                                       backgroundColor: statusInfo.color,
                                       display: 'inline-block',
+                                      flexShrink: 0,
                                     }}
                                   />
-                                  {statusInfo.label}
+                                  <span
+                                    style={{
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      lineHeight: 1,
+                                    }}
+                                  >
+                                    {statusInfo.label}
+                                  </span>
                                 </span>
                               </div>
                               <span style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
