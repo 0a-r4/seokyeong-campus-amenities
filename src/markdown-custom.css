@@ -1,0 +1,144 @@
+@import "github-markdown-css/github-markdown.css";
+
+/* Light theme defaults */
+.markdown-body,
+[data-theme="light"] .markdown-body {
+  color-scheme: light;
+  --fgColor-default: #1f2328;
+  --fgColor-muted: #59636e;
+  --fgColor-accent: #0969da;
+  --fgColor-success: #1a7f37;
+  --fgColor-attention: #9a6700;
+  --fgColor-danger: #d1242f;
+  --fgColor-done: #8250df;
+  --bgColor-default: #ffffff;
+  --bgColor-muted: #f6f8fa;
+  --bgColor-neutral-muted: #818b981f;
+  --bgColor-attention-muted: #fff8c5;
+  --borderColor-default: #d1d9e0;
+  --borderColor-muted: #d1d9e0b3;
+  --borderColor-neutral-muted: var(--borderColor-muted);
+  --borderColor-accent-emphasis: #0969da;
+  --borderColor-attention-emphasis: #9a6700;
+  --borderColor-danger-emphasis: #cf222e;
+  --borderColor-done-emphasis: #8250df;
+  --borderColor-success-emphasis: #1a7f37;
+  --color-prettylights-syntax-comment: #59636e;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #6639ba;
+  --color-prettylights-syntax-tag: #0550ae;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] .markdown-body {
+  color-scheme: dark;
+  --fgColor-default: #f0f6fc;
+  --fgColor-muted: #9198a1;
+  --fgColor-accent: #4493f8;
+  --fgColor-success: #3fb950;
+  --fgColor-attention: #d29922;
+  --fgColor-danger: #f85149;
+  --fgColor-done: #ab7df8;
+  --bgColor-default: #0d1117;
+  --bgColor-muted: #161b22;
+  --bgColor-neutral-muted: #656c7633;
+  --bgColor-attention-muted: #bb800926;
+  --borderColor-default: #3d444d;
+  --borderColor-muted: #3d444db3;
+  --borderColor-neutral-muted: var(--borderColor-muted);
+  --borderColor-accent-emphasis: #1f6feb;
+  --borderColor-attention-emphasis: #9e6a03;
+  --borderColor-danger-emphasis: #da3633;
+  --borderColor-done-emphasis: #8957e5;
+  --borderColor-success-emphasis: #238636;
+  --color-prettylights-syntax-comment: #9198a1;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-tag: #7ee787;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-string: #a5d6ff;
+}
+
+.markdown-body {
+  word-break: keep-all;
+}
+
+/* 목록 스타일 복원 (Tailwind CSS Preflight의 list-style: none 덮어쓰기) */
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body ul ul,
+.markdown-body ol ul {
+  list-style-type: circle;
+}
+
+.markdown-body ul ul ul,
+.markdown-body ol ul ul {
+  list-style-type: square;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+/* 표 전체 */
+.markdown-body table {
+  width: 100%;
+  table-layout: auto;
+}
+
+/* 모든 셀 */
+.markdown-body th,
+.markdown-body td {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* 첫 번째 열 */
+.markdown-body th:first-child,
+.markdown-body td:first-child {
+  width: 22%;
+}
+
+.markdown-body details {
+  margin: 16px 0;
+  padding: 0 16px;
+  border: 1px solid var(--borderColor-default, rgb(209, 217, 224));
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+.markdown-body details summary {
+  margin: 0 -18px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0);
+}
+
+.markdown-body details[open] summary {
+  border-bottom: 1px solid var(--borderColor-default, rgb(209, 217, 224));
+}
+
+.markdown-body details > p {
+  margin-top: 12px;
+}
+
+.markdown-body details img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
